@@ -48,12 +48,21 @@ function App() {
       })
   }
 
+  const checkLogin = () => {
+    axios.post(`${BASE_URL}/v2/api/user/check`)
+      .then((res) => alert("使用者已登入"))
+      .catch((err) => {
+        console.error(err);
+      })
+  }
+
   return (
     <>
     { isAuth ? (
     <div className="container py-5">
       <div className="row">
         <div className="col-6">
+          <button onClick={checkLogin} className="btn btn-success mb-5" type="button">檢查使用者是否登入</button>
           <h2>產品列表</h2>
           <table className="table">
             <thead>
